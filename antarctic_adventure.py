@@ -42,7 +42,7 @@ class Player(pygame.sprite.Sprite):
         # 발
         pygame.draw.ellipse(self.base_image, ORANGE, (10, 43, 10, 7))
         pygame.draw.ellipse(self.base_image, ORANGE, (20, 43, 10, 7))
-        self.image = self.base_image
+        self.image = pygame.transform.scale(self.base_image, (40 * 3, 50 * 3))
         self.rect = self.image.get_rect(midbottom=(SCREEN_WIDTH // 2, SCREEN_HEIGHT - PLAYER_BASE_Y_OFFSET))
         
         self.x_pos = 0  # 트랙 중앙을 0으로, -1 ~ 1 사이 값
@@ -104,6 +104,7 @@ class WorldObject(pygame.sprite.Sprite):
             pygame.draw.polygon(self.base_image, FISH_SILVER, [(42, 19), (60, 8), (60, 30)])
             # 눈
             pygame.draw.circle(self.base_image, BLACK, (15, 18), 3)
+            self.base_image = pygame.transform.scale(self.base_image, (120, 76))
 
         self.image = self.base_image
         self.rect = self.image.get_rect()
