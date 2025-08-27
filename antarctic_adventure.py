@@ -42,7 +42,7 @@ class Player(pygame.sprite.Sprite):
         # 발
         pygame.draw.ellipse(self.base_image, ORANGE, (10, 43, 10, 7))
         pygame.draw.ellipse(self.base_image, ORANGE, (20, 43, 10, 7))
-        self.image = pygame.transform.scale(self.base_image, (40 * 3, 50 * 3))
+        self.image = pygame.transform.scale(self.base_image, (40 * 2, 50 * 2))
         self.rect = self.image.get_rect(midbottom=(SCREEN_WIDTH // 2, SCREEN_HEIGHT - PLAYER_BASE_Y_OFFSET))
         
         self.x_pos = 0  # 트랙 중앙을 0으로, -1 ~ 1 사이 값
@@ -167,7 +167,7 @@ def game_loop(screen, clock, font):
 
     # 첫 장애물이 더 빨리 나오도록 타이머 초기값 조정
     # 약 1.5초(90프레임) 후에 첫 장애물이 등장하도록 설정합니다.
-    spawn_threshold = 60 / (game_speed + 0.1)
+    spawn_threshold = 20 / (game_speed + 0.1)
     object_spawn_timer = max(0, spawn_threshold - 90) # 90프레임(1.5초) 후에 등장
     
     running = True
@@ -189,7 +189,7 @@ def game_loop(screen, clock, font):
 
             # 오브젝트 생성
             object_spawn_timer += 1
-            if object_spawn_timer > 60 / (game_speed + 0.1):
+            if object_spawn_timer > 20 / (game_speed + 0.1):
                 object_spawn_timer = 0
                 # 장애물(구멍) 생성
                 new_obstacle = WorldObject('obstacle')
